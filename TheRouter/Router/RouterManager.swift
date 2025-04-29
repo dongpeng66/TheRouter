@@ -6,6 +6,7 @@ public class RouterManager {
     private var routes: [String: RouteHandler] = [:]
     private var dynamicRoutes: [String: RouteHandler] = [:]
     private var viewControllerMap: [String: UIViewController.Type] = [:]
+    private var viewControllerDynamicRoutes: [String: RouteHandler] = [:]
     
     private init() {}
     
@@ -21,6 +22,10 @@ public class RouterManager {
     // MARK: - 视图控制器注册
     public func register<T: UIViewController>(route: String, viewControllerType: T.Type) {
         viewControllerMap[route] = viewControllerType
+    }
+    public func registerDynamicVC<T: UIViewController>(route: String, viewControllerType: T.Type, handler: @escaping RouteHandler) {
+        viewControllerMap[route] = viewControllerType
+        viewControllerDynamicRoutes[route] = handler
     }
     
     // MARK: - 路由跳转
@@ -44,6 +49,13 @@ public class RouterManager {
             let viewController = viewControllerType.init()
             if let configurable = viewController as? RouteConfigurable {
                 configurable.configure(with: parameters)
+            }
+            
+            // 尝试匹配动态路由
+            for (pattern, handler) in viewControllerDynamicRoutes {
+                if match(pattern: pattern, with: route) {
+                    handler(parameters)
+                }
             }
             
             switch navigationType {

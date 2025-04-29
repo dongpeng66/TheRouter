@@ -58,6 +58,13 @@ class RootViewController: UIViewController {
                 print("参数：\(params)")
             }
         }
+        
+        RouterManager.shared.registerDynamicVC(route: "homeProfile/:userId", viewControllerType: HomeProfileViewController.self) { parameters in
+            print("处理动态路由")
+            if let params = parameters {
+                print("参数：\(params)")
+            }
+        }
     }
     
     @objc private func testNavigation() {
@@ -67,14 +74,16 @@ class RootViewController: UIViewController {
 //        RouterManager.shared.navigate(to: "profile/:userId", parameters: parameters)
         
         
-        RouterManager.shared.openURL(url: "profile/:userId?name=John&age=25", parameters: ["type": "test"], navigationType: .push)
+//        RouterManager.shared.openURL(url: "profile/:userId?name=John&age=25", parameters: ["type": "test"], navigationType: .push)
+//        
+//        // 使用自定义参数跳转
+//        let customParams = ["title": "首页", "showBack": true] as [String : Any]
+//        RouterManager.shared.navigate(to: "home", parameters: customParams)
+//        
+//        // 动态路由跳转
+//        RouterManager.shared.navigate(to: "dynamic/456", parameters: ["type": "test"])
         
-        // 使用自定义参数跳转
-        let customParams = ["title": "首页", "showBack": true] as [String : Any]
-        RouterManager.shared.navigate(to: "home", parameters: customParams)
-        
-        // 动态路由跳转
-        RouterManager.shared.navigate(to: "dynamic/456", parameters: ["type": "test"])
+        RouterManager.shared.openURL(url: "homeProfile/:userId?name=John&age=25", parameters: ["type": "test"], navigationType: .push)
     }
 }
 

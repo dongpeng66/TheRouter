@@ -92,7 +92,7 @@ public class RouterManager {
         }
     }
     
-    // MARK: - 路由匹配
+    // MARK: - 路由匹配 homeProfile/:userId?name=John&age=25
     private func match(pattern: String, with route: String) -> Bool {
         let patternComponents = pattern.components(separatedBy: "/")
         let routeComponents = route.components(separatedBy: "/")
@@ -127,6 +127,7 @@ public class RouterManager {
         
         return parameters
     }
+    // MARK: - 获取URL Path
     public func getUrlPath(from url: URL) -> String? {
         guard let components = URLComponents(url: url, resolvingAgainstBaseURL: false) else {
             return nil

@@ -48,8 +48,8 @@ class RootViewController: UIViewController {
         // 手动注册路由
         HomeViewController.register()
         
-        // 自动注册路由
-        ProfileViewController.autoRegister()
+        // 注册路由
+        ProfileViewController.register()
         
         // 动态注册路由
         RouterManager.shared.registerDynamic(route: "dynamic/:id") { parameters in

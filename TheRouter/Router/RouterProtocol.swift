@@ -13,14 +13,14 @@ public extension Routable {
     }
 }
 
-// MARK: - 自动注册
-public protocol AutoRegisterable: Routable {}
-
-public extension AutoRegisterable {
-    static func autoRegister() {
-        register()
-    }
-} 
+//// MARK: - 自动注册
+//public protocol AutoRegisterable: Routable {}
+//
+//public extension AutoRegisterable {
+//    static func autoRegister() {
+//        register()
+//    }
+//} 
 
 // MARK: - 视图控制器注册,回调configure数据配置
 public protocol RouteConfigurable {

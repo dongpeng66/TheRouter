@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController, AutoRegisterable, RouteConfigurable {
+class ProfileViewController: UIViewController, Routable, RouteConfigurable {
     func configure(with parameters: [String : Any]?) {
         print("跳转到个人资料页")
         if let params = parameters {

@@ -95,7 +95,7 @@ class DetailViewController: UIViewController, RouteConfigurable {
         view.backgroundColor = .white
     }
     
-    func configure(with parameters: [String: Any]?) {
+    func handle(with parameters: [String: Any]?) {
         if let title = parameters?["title"] as? String {
             self.title = title
         }
@@ -123,7 +123,7 @@ class ModalViewController: UIViewController, RouteConfigurable {
         ])
     }
     
-    func configure(with parameters: [String: Any]?) {
+    func handle(with parameters: [String: Any]?) {
         if let title = parameters?["title"] as? String {
             self.title = title
         }

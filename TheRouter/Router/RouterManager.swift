@@ -48,7 +48,7 @@ public class RouterManager {
         if let viewControllerType = viewControllerMap[route] {
             let viewController = viewControllerType.init()
             if let configurable = viewController as? RouteConfigurable {
-                configurable.configure(with: parameters)
+                configurable.handle(with: parameters)
             }
             
             // 尝试匹配动态路由

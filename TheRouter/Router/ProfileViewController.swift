@@ -8,7 +8,7 @@
 import UIKit
 
 class ProfileViewController: UIViewController, Routable, RouteConfigurable {
-    func configure(with parameters: [String : Any]?) {
+    func handle(with parameters: [String : Any]?) {
         print("跳转到个人资料页")
         if let params = parameters {
             print("参数：\(params)")
@@ -25,7 +25,7 @@ class ProfileViewController: UIViewController, Routable, RouteConfigurable {
         }
         let viewController = ProfileViewController.init()
         if let configurable = viewController as? RouteConfigurable {
-            configurable.configure(with: parameters)
+            configurable.handle(with: parameters)
         }
         NavigationManager.shared.push(viewController)
     }

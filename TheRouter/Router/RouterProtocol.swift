@@ -24,5 +24,5 @@ public extension Routable {
 
 // MARK: - 视图控制器注册,回调configure数据配置
 public protocol RouteConfigurable {
-    func configure(with parameters: [String: Any]?)
+    func handle(with parameters: [String: Any]?)
 }
